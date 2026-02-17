@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Drive - ServePics</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/drive.css">
+</head>
+<body>
+    <nav class="navbar navbar-drive">
+        <div class="container">
+            <a href="/" class="logo-container">
+                <div class="logo-icon">💾</div>
+                <h1 class="logo">ServePics</h1>
+            </a>
+            <div class="nav-user">
+                <span id="username" class="user-name"></span>
+                <span id="userBadge" class="user-badge"></span>
+                <button id="logoutBtn" class="btn btn-sm btn-outline">Déconnexion</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="drive-container">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Stockage</h3>
+                <div class="storage-info">
+                    <div class="storage-bar">
+                        <div id="storageProgress" class="storage-progress" style="width: 0%;"></div>
+                    </div>
+                    <div class="storage-text">
+                        <span id="storageUsed">0 MB</span> / <span id="storageLimit">5 GB</span>
+                    </div>
+                    <div id="storagePercentage" class="storage-percentage">0%</div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <button id="uploadBtn" class="btn btn-primary btn-full pulse">
+                    📄 Uploader un fichier
+                </button>
+                <input type="file" id="fileInput" style="display: none;" multiple>
+            </div>
+
+            <div class="sidebar-section" id="adminLink" style="display: none;">
+                <a href="/admin" class="btn btn-outline btn-full">
+                    ⚙️ Panneau Admin
+                </a>
+            </div>
+        </aside>
+
+        <main class="drive-main">
+            <div class="drive-header">
+                <h2>Mes fichiers</h2>
+                <div class="drive-actions">
+                    <button id="refreshBtn" class="btn btn-sm btn-outline">🔄 Actualiser</button>
+                </div>
+            </div>
+
+            <div id="uploadProgress" class="upload-progress" style="display: none;">
+                <div class="upload-info">
+                    <span class="upload-text">Upload en cours...</span>
+                    <span class="upload-percentage">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <div class="empty-icon">📁</div>
+                <h3>Aucun fichier pour le moment</h3>
+                <p>Uploadez votre premier fichier pour commencer</p>
+                <button class="btn btn-primary" onclick="document.getElementById('uploadBtn').click()">
+                    📄 Uploader maintenant
+                </button>
+            </div>
+
+            <div id="filesList" class="files-grid"></div>
+        </main>
+    </div>
+
+    <!-- Modal pour prévisualisation -->
+    <div id="fileModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="/js/drive.js"></script>
+</body>
+</html>
